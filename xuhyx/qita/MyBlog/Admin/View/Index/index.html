@@ -1,0 +1,190 @@
+{extends file="../Layouts/index.html"}
+
+{*默认主页标题class*}
+{block name='class1'}
+active
+{/block}
+
+{*主体右部更改*}
+{block name="mainpanel"}               
+                <div class="mainpanel">
+                    <div class="contentpanel">
+                        <div class="row row-stat">
+						    <div class="col-md-3">
+                                <div class="panel noborder">
+                                    <div class="panel-heading noborder">
+                                        <div class="panel-btns">
+                                            <a href="#" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
+                                        </div><!-- panel-btns -->
+                                        <div class="panel-icon icon-user"><i class="fa fa-user"></i></div>
+                                        <div class="media-body">
+                                            <h1 class="mt5">{$count}</h1>
+                                            <h5 class="md-title nomargin">用户</h5>											
+                                        </div><!-- media-body -->
+                                    </div><!-- panel-body -->
+                                </div><!-- panel -->
+                            </div><!-- col-md-3 -->
+							
+							<div class="col-md-3">
+                                <div class="panel noborder">
+                                    <div class="panel-heading noborder">
+                                        <div class="panel-btns">
+                                            <a href="#" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
+                                        </div><!-- panel-btns -->
+                                        <div class="panel-icon icon-globe"><i class="fa fa-bars"></i></div>
+                                        <div class="media-body">                                          
+                                            <h1 class="mt5">{$count_a}</h1>
+											<h5 class="md-title nomargin">文章</h5>
+                                        </div><!-- media-body -->
+                                    </div><!-- panel-body -->
+                                </div><!-- panel -->
+                            </div><!-- col-md-3 -->
+							
+                            <div class="col-md-3">
+                                <div class="panel noborder">
+                                    <div class="panel-heading noborder">
+                                        <div class="panel-btns">
+                                            <a href="#" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
+                                        </div><!-- panel-btns -->
+                                        <div class="panel-icon icon-envelope"><i class="fa fa-envelope"></i></div>
+                                        <div class="media-body">                                           
+                                            <h1 class="mt5">4,658</h1>
+											<h5 class="md-title nomargin">留言</h5>
+                                        </div><!-- media-body -->
+                                    </div><!-- panel-body -->
+                                </div><!-- panel -->
+                            </div><!-- col-md-3 -->
+							<div class="col-md-3">
+                                <div class="panel noborder">
+                                    <div class="panel-heading noborder">
+                                        <div class="panel-btns">
+                                            <a href="#" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
+                                        </div><!-- panel-btns -->
+                                        <div class="panel-icon icon-gavel"><i class="fa fa-photo"></i></div>
+                                        <div class="media-body">                                           
+                                            <h1 class="mt5">7,117</h1>
+											<h5 class="md-title nomargin">相册</h5>
+                                        </div><!-- media-body -->
+                                    </div><!-- panel-body -->
+                                </div><!-- panel -->
+                            </div><!-- col-md-3 -->
+							
+                        </div><!-- row -->
+						<div class="row">
+							<div class="col-md-8">
+								<section class="panel panel-default">
+									<div class="panel-body weather-row">
+										<img src="./Public/picture/weather_image.jpg" height="243" alt="">
+										<div class="weather-head">
+											天气预报
+										</div>
+										<div class="form-group country-select">
+											<select class="width100p" placeholder="杭州">
+												<option value="">杭州</option>
+												<option value="">上海</option>
+												<option value="">北京</option>
+											</select>
+										</div>
+									</div>
+									<div class="panel-footer">
+										<div class="row weather-full-info">
+											<div class="col-md-3 today-status">
+												<h1>Today</h1>
+												<span class="wi wi-day-cloudy"></span>
+												<div class="degree">37</div>
+											</div>
+											<div class="col-md-9">
+												<ul>
+													<li>
+														<h2>Tomorrow</h2>
+														<span class="wi wi-day-cloudy text-primary"></span>
+														<div class="statistics">32</div>
+													</li>
+													<li>
+														<h2>Mon</h2>
+														<span class="wi wi-day-cloudy text-danger"></span>
+														<div class="statistics">40</div>
+													</li>
+													<li>
+														<h2>Tue</h2>
+														<span class="wi wi-day-cloudy text-info"></span>
+														<div class="statistics">25</div>
+													</li>
+													<li>
+														<h2>Wed</h2>
+														<span class="wi wi-day-cloudy text-success"></span>
+														<div class="statistics">37</div>
+													</li>
+													<li>
+														<h2>Thu</h2>
+														<span class="wi wi-day-cloudy text-warning"></span>
+														<div class="statistics">15</div>
+													</li>
+													<li>
+														<h2>Fri</h2>
+														<span class="wi wi-day-cloudy"></span>
+														<div class="statistics">21</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+
+							<div class="col-md-4">
+								<section class="panel panel-default">
+									<div class="clock-panel">
+										<h1>December 14</h1>
+										<p class="text-left">2014, Friday</p>
+										<p class="text-left">7:53 PM</p>
+									</div>
+									<ul id="clock">
+										<li id="sec"></li>
+										<li id="hour"></li>
+										<li id="min"></li>
+									</ul>
+
+									<ul class="clock-category">
+										<li>
+											<a href="#" class="active">
+												<i class="fa fa-clock-o"></i>
+												<span>Clock</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="fa fa-clock-o"></i>
+												<span>Alarm</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="fa fa-clock-o"></i>
+												<span>Stop watch</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="fa fa-clock-o"></i>
+												<span>Timer</span>
+											</a>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>						
+                    </div><!-- contentpanel -->
+                </div><!-- mainpanel -->
+{/block}
+
+{*主体右部分jquery*}
+{block name="script"}
+{literal}
+<script>
+	$('body').click(function(){
+		console.log(111111);
+	})
+</script>
+{/literal}
+{/block}

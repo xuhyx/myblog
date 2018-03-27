@@ -1,0 +1,130 @@
+{extends file="../Layouts/index.html"}
+
+{*默认主页标题class*}
+{block name='class2'}
+active
+{/block}
+
+{*主体右部更改*}
+{block name="mainpanel"}
+	<div class="mainpanel">
+	    <div class="contentpanel">
+	        <div class="row">
+	            <form class="col-sm-9" action="index.php?c=user&a=index" method="post">
+	                 <h5 class="md-title">用户</h5>
+	                
+	                
+	              
+	                <div class="well mt10">
+	                	
+	                    <div class="row">
+	                    	<ul class="nav nav-pills nav-stacked nav-contacts">
+			                    <li class="active read_list">
+			                        <a href="index.php?c=user&a=index" >
+			                            	查看用户列表
+			                            <span class="badge pull-right">{$count}</span>
+			                        </a>
+			                    </li>
+			                    <li class="add_article">
+			                        <a href="index.php?c=user&a=add" >
+			                            	+ 添加用户
+			                        </a>
+			                    </li>
+			                </ul>
+			                
+	                        <div class="col-sm-9 search_user">
+	                            <input type="text" placeholder="查找用户" class="form-control" name="search" id="uvalue">
+	                        </div>
+	                        <div class="col-sm-3 search_stadius" >
+	                            <select id="search-type" class="" data-placeholder="Search Type" name="searchCondition" >
+	                                <option value="nickname" selected>昵称</option>
+	                                <option value="stadus">状态</option>
+	                                <option value="phone">手机号</option>
+	                            </select>
+	                        </div>
+	                       
+	                      
+	                       		<input class="search_submit" type="submit" value="查询"/>
+	                       	
+	                    </div>
+	                </div><!-- well -->
+	                 </form>
+	                <br />
+	                
+	                <div class="pull-right">
+	                    <ul class="pagination pagination-split pagination-sm pagination-contact" >
+	                    	<li><a href="index.php?c=user&a=index&num=1{$url}">首页</a></li>
+	                        <li class="{if $num==1}disabled{else}{/if}"><a href="{if $num>1}index.php?c=user&a=index&num={$num-1}{$url}{else}{/if}"><i class="fa fa-angle-left"></i></a></li>
+	                        {if $page<=6}
+		                        {for $foo=1 to $page}
+		                       	<li class='{if $foo==$num}active{/if}'><a href="index.php?c=user&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}
+		                    {else if $num<=3}
+		                    	{for $foo=1 to 6}
+		                       	<li class='{if $foo==$num}active{/if}'><a href="index.php?c=user&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}
+		                        <li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+		                    {else if $num>=$page-3}
+		                    	<li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+		                    	{for $foo=$page-5 to $page}
+		                       	<li class='{if $foo==$num}active{/if}'><a href="index.php?c=user&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}   
+		                    
+	                        {else}
+	                    		<li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+	                        	{for $foo=$num-2 to $num+3}
+		                       	<li class='{if $foo==$num}active{/if}'><a href="index.php?c=user&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}
+	                    		<li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+	                        {/if}
+	                        <li class="{if $num==$page}disabled{else}{/if}"><a href="{if $num<$page}index.php?c=user&a=index&num={$num+1}{$url}{else}{/if}"><i class="fa fa-angle-right"></i></a></li>
+	                    	<li><a href="index.php?c=user&a=index&num={$page}{$url}">尾页</a></li>
+	                    	<li class="disabled"><a href="##" style="cursor: default;">共{$page}页</a></li>
+	                    </ul>
+	              </div>
+	                <h3 class="xlg-title">用户列表</h3>
+	                
+	                <div class="list-group contact-group">
+	                	{if $select==false}
+	                	<div class="list-group-item null"  >
+	                		<h3>------- 未搜索到相关内容 --------</h3>
+	                	</div><!-- list-group-item -->
+	                	{else}
+	                	{foreach $select as $k=>$v}
+	                    <div class="list-group-item" >
+	                        <div class="media">
+	                           
+	                            <div class="media-body" >
+	                                
+	                                <div class="media-content">
+	                                    <ul class="list-unstyled">
+	                                        <li class="pull-left">
+				                                <img class="img-circle img-online" src="../Public/Uploads/headerPic/{$v['users_pic']}" alt="...">
+				                            </li>
+				                            <li class="media-heading">{$v['nickname']}</li>
+	                                        <li class="media_li1"><i class="fa fa-mobile"></i>{$v['phone']}</li>
+	                                        <li class="media_li2"><i class="fa fa-skype"></i>{if $v['status']==0}锁定{else}激活{/if}</li>
+	                                        <li class="media_li3"><i class="fa "></i><a href="index.php?c=user&a=edit&eid={$v['id']}">编辑</a></li>
+	                                        <li class="media_li3"><i class="fa "></i><a href="index.php?c=user&a=delete&eid={$v['id']}&pic={$v['users_pic']}">删除</a></li>
+	                                    </ul>
+	                                </div>
+	                            </div>
+	                        </div><!-- media -->
+	                    </div><!-- list-group -->
+	                    
+	                    {/foreach}
+	                    {/if}
+	                </div><!-- list-group -->
+	                
+	                
+	                
+	                
+	            
+	        </div><!-- row -->  
+	    
+	    </div><!-- contentpanel -->
+	    
+	</div>
+{*主体右部分jquery*}
+{/block}
+

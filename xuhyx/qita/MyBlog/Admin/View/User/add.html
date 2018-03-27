@@ -1,0 +1,90 @@
+{extends file="../Layouts/index.html"}
+
+{*样式*}
+{block name="style"}
+{literal}
+	<style>
+		.contentpanel{min-height: 500px;}
+		.contentpanel>.row{width: 100%;}
+		.contentpanel>.row .col-sm-9{width: 100%;}
+		.contentpanel>.row .col-sm-9 .mt10{width: 100%;max-width: 800px;}
+		.contentpanel>.row .col-sm-9 .mt10>.row{display: flex;justify-content: flex-start; align-items: center;}
+		.contentpanel>.row .col-sm-9 .mt10>.row ul{display: flex;width:260px ;justify-content: center;margin-bottom: 0;}
+		.form{background: #e4e7ea;padding: 19px;max-width: 800px;}
+		.form p input{width: 90%;padding: 10px;border-radius:5px;border: 1px solid #ccc;}
+		.form .btn{width: 100px;height: 40px;border-radius: 5px;background: #fff;margin-right: 10px;}
+		.xlg-title{height: 50px;line-height: 50px;}
+		.nav-contacts{display: flex;min-width:300px ;justify-content: center;margin: 0;align-items: center;align-self: center;};
+	</style>
+{/literal}
+{/block}
+
+{*标题class*}
+{block name='class2'}
+active
+{/block}
+
+{*主体右部更改*}
+{block name="mainpanel"}
+	<div class="mainpanel" >
+	    <div class="contentpanel">
+	        <div class="row">
+	            <div class="col-sm-9">
+	                 <h5 class="md-title">用户</h5>
+	                
+	                
+	              
+	                <div class="well mt10">
+	                	
+	                    <div class="row">
+	                    	<ul class="nav nav-pills nav-stacked nav-contacts">
+			                    <li style="min-width: 135px;margin-right: 10px;">
+			                        <a href="index.php?c=user&a=index" >
+			                            	查看用户列表
+			                            <span class="badge pull-right">{$count}</span>
+			                        </a>
+			                    </li>
+			                    <li class="active" style="width: 120px;">
+			                        <a href="index.php?c=index&a=add" >
+			                            	+ 添加用户
+			                        </a>
+			                    </li>
+			                </ul>
+	                       
+	                        
+	                    </div>
+	                </div><!-- well -->
+	                
+	                <br />
+	               
+	                <h3 class="xlg-title">添加用户</h3>
+	                
+	                <div class="form">
+	                	<form action="index.php?c=user&a=insert" method="post" enctype = "multipart/form-data">
+	                		<p><input type="text" name="nickname" id="nickname" value="" placeholder="请输入昵称"/></p>
+	                		<p><input type="password" name="password" id="password" value="" placeholder="请输入密码"/></p>
+	                		<p><input type="password" name="password2" id="password2" value="" placeholder="请再次输入密码"/></p>
+	                		<p><input type="tel" name="phone" id="phone" value="" placeholder="请输入手机号"/></p>
+	                		<p>上传头像<input type="file" name="users_pic" id="users_pic" /></p>
+	                		<input class="btn" type="submit" value="提交"/>
+	                		<input class="btn" type="reset" value="重置"/>
+	                	</form>
+	                </div><!-- list-group -->
+	                
+	                
+	                
+	                
+	            </div><!-- col-sm-9 -->
+	        </div><!-- row -->  
+	    
+	    </div><!-- contentpanel -->
+	    
+	</div>
+{*主体右部分jquery*}
+{/block}
+{block name="script"}	
+{literal}
+<script>
+</script>
+{/literal}
+{/block}

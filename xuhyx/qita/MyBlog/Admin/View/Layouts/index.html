@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Xuhyx的博客后台</title>
+
+        <link href="./Public/css/style.default.css" rel="stylesheet">
+        <link href="./Public/css/morris.css" rel="stylesheet">
+        <link href="./Public/css/select2.css" rel="stylesheet" />		
+		<link href="./Public/css/style.css" rel="stylesheet">
+		<link href="./Public/css/style.calendar.css" rel="stylesheet">
+		<link href="./Public/css/add.css" rel="stylesheet">
+		<link rel="stylesheet" href="./Public/css/font-awesome.min.css">
+		<link href="./Public/css/style.add.css" rel="stylesheet">
+		
+		
+		{*样式更改*}
+		{block name="style"}
+		
+		{/block}
+		
+    </head>
+
+    <body>
+ 
+        <header>
+            <div class="headerwrapper">
+                <div class="header-left" style="height: 40px;padding: 10px;">
+                    <a href="index.html" class="logo" style="font-size: 30px;color: #fff;line-height: 40px;height: 40px;">Xuhyx</a>
+                    <div class="pull-right">
+                        <a href="#" class="menu-collapse">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </div><!-- header-left -->
+            </div><!-- headerwrapper -->
+        </header>
+        
+        <section>
+            <div class="mainwrapper">
+                <div class="leftpanel" style="min-height: 800px;">
+                    <div class="media profile-left">
+                        <a class="pull-left profile-thumb" href="##">
+                            <img class="img-circle" src="../Public/Uploads/headerPic/{$smarty.session.pic}" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading" style="font-size: 24px;height: 40px;line-height: 40px;">{$smarty.session.nickname}</h4>
+                        </div>
+                    </div><!-- media -->
+                    
+                    
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="{block name='class1'}{/block}"><a href="index.php?c=index&a=index"><i class="fa fa-home"></i> <span>主页</span></a></li>
+                        <li class="{block name='class2'}{/block}"><a href="index.php?c=user&a=index"><i class="fa fa-user"></i> <span>用户管理</span></a></li>
+                        
+                        <li class="{block name='class3'}{/block}"><a href="index.php?c=article&a=index"><i class="fa fa-book"></i> <span>文章管理</span></a></li>
+                        <li class="{block name='class4'}{/block}"><a href="#"><i class="fa fa-bars"></i> <span>心情管理</span></a></li>
+                        <li class="{block name='class5'}{/block}"><a href="index.php?c=message&a=index"><i class="fa fa-envelope-o"></i> <span>留言管理</span></a></li>
+                        <li class="{block name='class6'}{/block}"><a href="icons.html"><i class="fa fa-picture-o"></i> <span>相册管理</span></a></li>
+                        <li class="{block name='class7'}{/block}"><a href="index.php?c=banner&a=index"><i class="fa fa-cube"></i> <span>轮播图管理</span></a></li>
+                        <li class="{block name='class8'}{/block}"><a href="index.php?c=login&a=doLogout"><i class="glyphicon glyphicon-log-out"></i> <span>退出</span></a></li>
+                    </ul>
+                    
+                </div><!-- leftpanel -->
+{*主体右部更改*}
+{block name="mainpanel"}   
+{/block}          
+            </div><!-- mainwrapper -->
+        </section>
+		
+        <script src="./Public/js/jquery-1.11.1.min.js"></script>
+        <script src="./Public/js/jquery-1.11.3.min.js"></script>
+        <script src="./Public/js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="./Public/js/bootstrap.min.js"></script>
+        <script src="./Public/js/modernizr.min.js"></script>
+        <script src="./Public/js/pace.min.js"></script>
+        <script src="./Public/js/retina.min.js"></script>
+        <script src="./Public/js/jquery.cookies.js"></script>
+        <script src="./Public/js/jquery.scrollto.min.js"></script>
+		<script src="./Public/js/jquery.slimscroll.js"></script>
+		
+        <script src="./Public/js/jquery.flot.min.js"></script>
+        <script src="./Public/js/jquery.flot.resize.min.js"></script>
+        <script src="./Public/js/jquery.flot.spline.min.js"></script>
+        <script src="./Public/js/jquery.sparkline.min.js"></script>
+        <script src="./Public/js/morris.min.js"></script>
+        <script src="./Public/js/raphael-2.1.0.min.js"></script>
+        <script src="./Public/js/bootstrap-wizard.min.js"></script>
+        <script src="./Public/js/select2.min.js"></script>
+		<script src="./Public/js/css3clock.js"></script>
+		<script src="./Public/js/jquery-ui-1.10.3.min.js"></script>
+        <script src="./Public/js/moment.min.js"></script>
+        <script src="./Public/js/fullcalendar.min.js"></script>
+        <script src="./Public/js/custom.js"></script>
+        <script src="./Public/js/dashboard.js"></script>
+
+		
+{*主体右部分jquery*}
+{block name="script"}
+{/block}
+{literal}
+<script>
+	$('.leftpanel').outerHeight($(window).height()-60);
+	if($('.contentpanel').outerHeight()<=$(window).height()-60){
+		$('.contentpanel').outerHeight($(window).height()-60);
+	}
+	
+</script>
+{/literal}		
+
+    </body>
+</html>

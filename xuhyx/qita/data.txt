@@ -1,0 +1,88 @@
+create table users(
+id int unsigned not null auto_increment primary key,
+nickname varchar(16) not null unique,
+password varchar(50) not null,
+status tinyint unsigned not null default 1,
+phone varchar(11) not null,
+users_pic varchar(50) not null
+);
+
+create table article(
+id int unsigned not null auto_increment primary key,
+title varchar(50) not null,
+author varchar(32) not null,
+intro varchar(255) not null,
+details text not null,
+picture varchar(50),
+keywords varchar(50),
+click_num int unsigned not null default 0,
+insert_at timestamp,
+up_num int unsigned not null default 0
+);
+
+create table comment(
+id int unsigned not null auto_increment primary key,
+uid int not null,
+aid int not null,
+content varchar(255) not null,
+replay_num int unsigned not null default 0,
+insert_at timestamp
+);
+
+create table banner(
+id int unsigned not null auto_increment primary key,
+filename varchar(80) not null,
+type varchar(15) not null,
+insert_at timestamp
+);
+
+create table mood(
+id int unsigned not null auto_increment primary key,
+contents varchar(150) not null,
+picture varchar(90),
+replay_num int unsigned not null default 0,
+up_num int unsigned not null default 0,
+insert_at timestamp
+);
+
+create table message(
+id int unsigned not null auto_increment primary key,
+uid int not null,
+contents varchar(150) not null,
+replay_num int unsigned not null default 0,
+insert_at timestamp
+);
+
+insert into users values(null,'海棠酒满','a1234567','1','15068823595','userpic.jpg');
+
+
+insert into users values(null,'admin','a1234567','1','15068823595','userpic.jpg');
+
+
+insert into comment values(null,'1','2','很好啊！','2','2018-1-12 12:13:23');
+
+
+alter table article add up_num int unsigned not null default 0;
+
+
+
+
+
+https://www.kancloud.cn/wangfupeng/wangeditor2/113961
+
+
+
+
+
+insert into message values(null,'1','路过','0','2018-3-13 12:25:45')
+
+
+
+
+
+
+
+
+
+
+

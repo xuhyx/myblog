@@ -1,0 +1,172 @@
+{extends file="../Layouts/index.html"}
+
+{*样式*}
+{block name="style"}
+{literal}
+	<style>
+		.contentpanel{min-height: 500px;}
+		.contentpanel>.row{width: 100%;}
+		.contentpanel>.row>.col-sm-9{width: 100%;}
+		.contentpanel>.row>.col-sm-9 .mt10{width: 100%;}
+		.contentpanel>.row>.col-sm-9 .mt10>.row{display: flex;justify-content: center; align-items: center;}
+		.contentpanel>.row>.col-sm-9 .mt10>.row ul{display: flex;min-width:300px ;justify-content: center;margin: 0;}
+		.list-group-item{display: flex;align-items: center;width: 100%;}
+		.list-group-item .picture{height: 100px;width: 170px;text-align: center;margin-right: 20px;}
+		.list-group-item .picture img{height: 100px;}
+		.contact-group .list-group-item .media-body{flex-flow: 1;display: flex;flex-direction: column;width: 100%;align-items: flex-start;}
+		.contact-group .list-group-item .media-body h3{height: 40px;line-height: 40px;font-size: 24px;margin: 0;}
+		.contact-group .list-group-item .title-a{display: flex;flex-direction: row;}
+		.contact-group .list-group-item .title-a .author{padding: 15px 0 0 20px;}
+		.contact-group .list-group-item .author-info{display: flex;flex-direction: row;width: 100%;}
+		.contact-group .list-group-item .author-info span{padding-right: 20px;height: 30px;line-height: 30px;min-width: 50px;}
+		.contact-group .list-group-item .author-info .insert_at{flex-grow: 1;}
+		.contact-group .list-group-item .author-info .keywords em{color: #006698;font-style: normal;}
+		.contact-group .list-group-item .author-info .num{display: flex;flex-direction: row;align-items: center;}
+		.contact-group .list-group-item .author-info .fa{width: 15px;height: 15px;margin-right: 5px;}
+		.contact-group .list-group-item .author-info .edit{width: 100px;padding: 0;display: flex;justify-content: space-around;}
+		.contact-group .list-group-item .intro{line-height: 25px;}
+		.search_submit{width: 120px;margin-left: 20px;border: none;background: #337ab7;color: #fff;font-size: 17px;height: 30px;border-radius: 5px;}
+	</style>
+{/literal}
+{/block}
+
+{*默认主页标题class*}
+{block name='class3'}
+active
+{/block}
+
+{*主体右部更改*}
+{block name="mainpanel"}
+	<div class="mainpanel">
+	    <div class="contentpanel">
+	        <div class="row">
+	            <form class="col-sm-9" action="index.php?c=article&a=index" method="post">
+	                 <h5 class="md-title">文章</h5>
+	                
+	                
+	              
+	                <div class="well mt10">
+	                	
+	                    <div class="row">
+	                    	<ul class="nav nav-pills nav-stacked nav-contacts">
+			                    <li class="active" style="min-width: 135px;margin-right: 10px;">
+			                        <a href="index.php?c=article&a=index" >
+			                            	查看文章列表
+			                            <span class="badge pull-right">{$count}</span>
+			                        </a>
+			                    </li>
+			                    <li style="width: 120px;">
+			                        <a href="index.php?c=article&a=add" >
+			                            	+ 添加文章
+			                        </a>
+			                    </li>
+			                </ul>
+			                
+	                        <div class="col-sm-9" style="float: left;height: 40px;">
+	                            <input type="text" placeholder="查找文章" class="form-control" name="search" id="uvalue">
+	                        </div>
+	                        <div class="col-sm-3" style="width:100px;float: left;">
+	                            <select id="search-type" class="" data-placeholder="Search Type" style="width: 100px;height: 30px;" name="searchCondition" >
+	                                <option value="title" selected>标题</option>
+	                                <option value="author">作者</option>
+	                                <option value="intro">简介</option>
+	                                <option value="keywords">关键词</option>
+	                                <option value="phone">时间</option>
+	                            </select>
+	                        </div>
+	                       
+	                      
+	                       		<input class="search_submit" type="submit" value="查询" style=""/>
+	                       	
+	                    </div>
+	                </div><!-- well -->
+	                 </form>
+	                <br />
+	                
+	                <div class="pull-right">
+	                    <ul class="pagination pagination-split pagination-sm pagination-contact" >
+	                    	<li><a href="index.php?c=article&a=index&num=1{$url}">首页</a></li>
+	                        <li class="{if $num==1}disabled{else}{/if}"><a href="{if $num>1}index.php?c=article&a=index&num={$num-1}{$url}{else}{/if}"><i class="fa fa-angle-left"></i></a></li>
+	                        {if $page<=6}
+		                        {for $foo=1 to $page}
+		                       	<li style="" class='{if $foo==$num}active{/if}'><a href="index.php?c=article&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}
+		                    {else if $num<=3}
+		                    	{for $foo=1 to 6}
+		                       	<li style="" class='{if $foo==$num}active{/if}'><a href="index.php?c=article&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}
+		                        <li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+		                    {else if $num>=$page-3}
+		                    	<li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+		                    	{for $foo=$page-5 to $page}
+		                       	<li style="" class='{if $foo==$num}active{/if}'><a href="index.php?c=article&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}   
+		                    
+	                        {else}
+	                    		<li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+	                        	{for $foo=$num-2 to $num+3}
+		                       	<li style="" class='{if $foo==$num}active{/if}'><a href="index.php?c=article&a=index&num={$foo}{$url}">{$foo}</a></li>
+		                        {/for}
+	                    		<li class="disabled"><a href="##" style="cursor: default;">...</a></li>
+	                        {/if}
+	                        <li class="{if $num==$page}disabled{else}{/if}"><a href="{if $num<$page}index.php?c=article&a=index&num={$num+1}{$url}{else}{/if}"><i class="fa fa-angle-right"></i></a></li>
+	                    	<li><a href="index.php?c=article&a=index&num={$page}{$url}">尾页</a></li>
+	                    	<li class="disabled"><a href="##" style="cursor: default;">共{$page}页</a></li>
+	                    </ul>
+	              </div>
+	                <h3 class="xlg-title">文章列表</h3>
+	                
+	                <div class="list-group contact-group">
+	                	{if $select==false}
+	                	<div class="list-group-item null"  style="justify-content: center;">
+	                		<h3>------- 未搜索到相关内容 --------</h3>
+	                	</div><!-- list-group-item -->
+	                	{else}
+	                	{foreach $select as $k=>$v}
+	                    <div class="list-group-item">
+	                    	<div class="picture">
+		                        <img class="" src="../Public/Uploads/articlePic/th_{$v['picture']}" alt="...">
+	                    	</div>
+	                        <div class="media-body">
+	                        	<div class="title-a"><h3 class="title">{strip_tags($v['title'])}</h3><span class="author">{$v['author']}</span></div>
+	                        	<div class="author-info">
+	                        		<span class="keywords">关键词：<em>{strip_tags($v['keywords'])}</em></span>
+	                        		<span class="insert_at">上传时间：{strip_tags($v['insert_at'])}</span>
+	                        		<span class="click_num num"><i class="fa fa-eye"></i>{strip_tags($v['click_num'])}</span>
+	                        		<span class="up_num num"><i class="fa fa-comment"></i>{strip_tags($v['up_num'])}</span>
+	                        		<span class="edit"><a href="index.php?c=article&a=edit&eid={$v['id']}">编辑</a><a href="index.php?c=article&a=delete&eid={$v['id']}&pic={$v['picture']}">删除</a></span>
+	                        	</div>
+	                        	
+	                        	<p class="intro">{strip_tags($v['intro'])}</p>
+	                        </div><!-- media-body -->
+	                    </div><!-- list-group -->
+	                    {/foreach}
+	                    {/if}
+	                </div><!-- list-group-item -->
+	                
+	                
+	                
+	                
+	            
+	        </div><!-- row -->  
+	    
+	    </div><!-- contentpanel -->
+	    
+	</div>
+{*主体右部分jquery*}
+{/block}
+{block name="script"}	
+{literal}
+<script>
+	jQuery(document).ready(function(){
+                
+    // Select2
+    jQuery('#search-type').select2({
+        minimumResultsForSearch: -1
+    });
+    
+    });
+</script>
+{/literal}
+{/block}
+

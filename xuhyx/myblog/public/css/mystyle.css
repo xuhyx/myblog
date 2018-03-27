@@ -1,0 +1,29 @@
+
+.table .td_button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.well{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.nav-pills:not(.nav-pills-icons){
+	display: flex;
+	align-items: center;
+}
+.nav-pills:not(.nav-pills-icons) > li{
+	padding: 0;
+	display: flex;
+}
+.nav-pills:not(.nav-pills-icons) > li > a{
+	border-radius: 0;
+}
+.nav-pills:not(.nav-pills-icons) .active> a{
+	border-radius: 0;
+	background: linear-gradient(60deg, #26c6da, #00acc1);
+}
+.nav-pills.nav-stacked > li + li{
+	margin: 0;
+}

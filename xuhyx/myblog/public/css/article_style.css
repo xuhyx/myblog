@@ -1,0 +1,47 @@
+.table th,.table td{
+		text-align: center;
+	}
+	.form-group{
+		margin-top: 15px;
+	}
+	.btn.btn-primary{
+		background: #26c6da;
+	}
+	.form-group textarea{
+		height: 300px;
+	}
+	.select{
+		height: 35px;
+		line-height: 35px;
+		margin: 10px 15px;
+	}
+	#div1 {
+		width: 100%;
+		height: 300px;
+		
+	}
+	.card-profile .card-avatar{
+		max-width: 80%;
+		width: 80%;
+		border-radius: 0;
+		max-height: 400px;
+	}
+	.form-group .pic{
+		width: 30%;
+		margin-left: 80px;
+	}
+	.form-group input[type=file]{
+		opacity: 0.6;
+		position:static;
+		padding-left: 80px;
+
+	}
+	.brandId{
+		border: none;
+		background: #fff;
+		line-height: 35px;
+		color: #00acc1;
+	}
+	.card-profile .article-content{
+		text-align: left;
+	}

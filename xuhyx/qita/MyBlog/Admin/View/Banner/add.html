@@ -1,0 +1,82 @@
+{extends file="../Layouts/index.html"}
+
+{*样式*}
+{block name="style"}
+{literal}
+	<style>
+		.contentpanel{min-height: 500px;}
+		.contentpanel>.row{width: 100%;}
+		.contentpanel>.row>.col-sm-9{width: 100%;float: none;}
+		.contentpanel>.row>.col-sm-9 .mt10{width: 100%;}
+		.contentpanel>.row>.col-sm-9 .mt10>.row{display: flex;justify-content: center; align-items: center;}
+		.contentpanel>.row>.col-sm-9 .mt10>.row ul{display: flex;min-width:300px ;justify-content: center;margin: 0;}
+		.form{padding: 19px;max-width: 800px;}
+		.form p input{width: 90%;padding: 10px;border-radius:5px;border: 1px solid #ccc;}
+		.form p textarea{width: 90%;padding: 10px;border-radius:5px;border: 1px solid #ccc;min-height: 250px;}
+		.form .btn{width: 100px;height: 40px;border-radius: 5px;background: #fff;margin-right: 10px;}
+		.search_submit{width: 120px;margin-left: 20px;border: none;background: #337ab7;color: #fff;font-size: 16px;height: 30px;border-radius: 5px;}
+		.xlg-title{height: 50px;line-height: 50px;}
+	</style>
+{/literal}
+{/block}
+
+{*默认主页标题class*}
+{block name='class3'}
+active
+{/block}
+
+{*主体右部更改*}
+{block name="mainpanel"}
+	<div class="mainpanel">
+	    <div class="contentpanel">
+	        <div class="row">
+	            <form class="col-sm-9" action="index.php?c=banner&a=index" method="post">
+	                <h5 class="md-title">图片</h5>
+	                <div class="well mt10">
+	                    <div class="row">
+	                    	<ul class="nav nav-pills nav-stacked nav-contacts">
+			                    <li style="min-width: 135px;margin-right: 10px;">
+			                        <a href="index.php?c=banner&a=index" >
+			                            	查看图片列表
+			                            <span class="badge pull-right">{$count}</span>
+			                        </a>
+			                    </li>
+			                    <li class="active" style="width: 120px;">
+			                        <a href="index.php?c=banner&a=add" >
+			                            	+ 添加图片
+			                        </a>
+			                    </li>
+			                </ul>
+	                        <div class="col-sm-9" style="float: left;height: 40px;">
+	                            <input type="text" placeholder="查找图片" class="form-control" name="search" id="uvalue">
+	                        </div>
+	                        <div class="col-sm-3" style="width:100px;float: left;">
+	                            <select id="search-type" class="" data-placeholder="Search Type" style="width: 100px;height: 30px;" name="searchCondition" >
+	                                <option value="title" selected>名称</option>
+	                                <option value="author">上传时间</option>
+	                                <option value="keywords">格式</option>
+	                            </select>
+	                        </div>
+	                       	<input class="search_submit" type="submit" value="查 询"/>
+	                    </div>
+	                </div><!-- well -->
+	            </form>
+                <br />
+                <h3 class="xlg-title" >添加图片</h3>
+                <div class="form">
+                	<form action="index.php?c=banner&a=insert" method="post" enctype = "multipart/form-data">
+                		<p style="line-height: 25px;">上传图片<input type="file" name="picture" id="picture" /></p>
+                		<input class="btn" type="submit" value="提交"/>
+                		<input class="btn" type="reset" value="重置"/>
+                	</form>
+                </div>
+	            
+	        </div><!-- row -->  
+	    
+	    </div><!-- contentpanel -->
+	    
+	</div>
+
+{/block}
+
+

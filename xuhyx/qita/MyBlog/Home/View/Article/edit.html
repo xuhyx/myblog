@@ -1,0 +1,104 @@
+{extends file="../Layouts/index.html"}
+
+{*样式*}
+{block name="style"}
+{literal}
+	<style>
+		.contentpanel{min-height: 500px;}
+		.contentpanel>.row{width: 100%;}
+		.contentpanel>.row>.col-sm-9{width: 100%;float: none;}
+		.contentpanel>.row>.col-sm-9 .mt10{width: 100%;}
+		.contentpanel>.row>.col-sm-9 .mt10>.row{display: flex;justify-content: center; align-items: center;}
+		.contentpanel>.row>.col-sm-9 .mt10>.row ul{display: flex;min-width:300px ;justify-content: center;margin: 0;}
+		.form{padding: 19px;max-width: 800px;}
+		.form p input{width: 90%;padding: 10px;border-radius:5px;border: 1px solid #ccc;}
+		.form p textarea{width: 90%;padding: 10px;border-radius:5px;border: 1px solid #ccc;min-height: 250px;}
+		.form p img{height: 150px;padding: 2px;border: 2px solid #ccc;margin:5px 10px 0 4em;}
+		.form .btn{width: 100px;height: 40px;border-radius: 5px;background: #fff;margin-right: 10px;}
+		.search_submit{width: 120px;margin-left: 20px;border: none;background: #337ab7;color: #fff;font-size: 17px;height: 30px;border-radius: 5px;}
+		.xlg-title{height: 50px;line-height: 50px;}
+	</style>
+{/literal}
+{/block}
+
+{*默认主页标题class*}
+{block name='class3'}
+active
+{/block}
+
+{*主体右部更改*}
+{block name="mainpanel"}
+	<div class="mainpanel">
+	    <div class="contentpanel">
+	        <div class="row">
+	            <form class="col-sm-9" action="index.php?c=article&a=index" method="post">
+	                <h5 class="md-title">文章</h5>
+	                <div class="well mt10">
+	                    <div class="row">
+	                    	<ul class="nav nav-pills nav-stacked nav-contacts">
+			                    <li style="min-width: 135px;margin-right: 10px;">
+			                        <a href="index.php?c=article&a=index" >
+			                            	查看文章列表
+			                            <span class="badge pull-right">{$count}</span>
+			                        </a>
+			                    </li>
+			                    <li style="width: 120px;">
+			                        <a href="index.php?c=article&a=add" >
+			                            	+ 添加文章
+			                        </a>
+			                    </li>
+			                </ul>
+	                        <div class="col-sm-9" style="float: left;height: 40px;">
+	                            <input type="text" placeholder="查找文章" class="form-control" name="search" id="uvalue">
+	                        </div>
+	                        <div class="col-sm-3" style="width:100px;float: left;">
+	                            <select id="search-type" class="" data-placeholder="Search Type" style="width: 100px;height: 30px;" name="searchCondition" >
+	                                <option value="title" selected>标题</option>
+	                                <option value="author">作者</option>
+	                                <option value="intro">简介</option>
+	                                <option value="keywords">关键词</option>
+	                                <option value="phone">时间</option>
+	                            </select>
+	                        </div>
+	                       	<input class="search_submit" type="submit" value="查询" style=""/>
+	                    </div>
+	                </div><!-- well -->
+	            </form>
+                <br />
+                <h3 class="xlg-title" style="">添加文章</h3>
+                <div class="form">
+                	<form action="index.php?c=article&a=update&eid={$info['id']}&pic={$info['picture']}" method="post" enctype = "multipart/form-data">
+                		<p>标　题：<input type="text" name="title" id="title" value="{$info['title']}"/></p>
+                		<p>作　者：<input type="text" name="author" id="author" value="{$info['author']}" placeholder="请输入作者"/></p>
+                		<p>简　介：<input type="text" name="intro" id="intro" value="{$info['intro']}" placeholder="请输入简介"/></p>
+                		<p>内　容：<textarea name="details" id="details" value="" placeholder="请输入文章内容">{$info['details']}</textarea></p>
+                		<p>关键词：<input type="text" name="keywords" id="keywords" value="{$info['keywords']}" placeholder="请输入关键词"/></p>
+                		<p style="line-height: 25px;">修改图片</p>
+                		<p style="display: flex;align-items: center;"><img src="../Public/Uploads/articlePic/{$info['picture']}"/><input style="flex-grow: 1;" type="file" name="picture" id="picture" /></p>
+                		<p style="text-align: center;"><input class="btn" type="submit" value="提交"/>
+                		<input class="btn" type="reset" value="重置"/></p>
+                	</form>
+                </div>
+	            
+	        </div><!-- row -->  
+	    
+	    </div><!-- contentpanel -->
+	    
+	</div>
+{*主体右部分jquery*}
+{/block}
+{block name="script"}	
+{literal}
+<script>
+	jQuery(document).ready(function(){
+                
+    // Select2
+    jQuery('#search-type').select2({
+        minimumResultsForSearch: -1
+    });
+    
+    });
+</script>
+{/literal}
+{/block}
+

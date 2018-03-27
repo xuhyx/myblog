@@ -1,0 +1,98 @@
+{extends file="../Layouts/index.html"}
+
+{*样式*}
+{block name="style"}
+{literal}
+	<style>
+		.form{background: #e4e7ea;padding: 19px;max-width: 800px;}
+		.form span{display: block;height: 30px;line-height: 30px;}
+		.form img{width: 100px;height: 100px;margin: 10px 20px 10px 0;}
+		.form p input{width: 90%;padding: 10px;border-radius:5px;border: 1px solid #ccc;}
+		.form p #users_pic{width: 70%;}
+		.form p label{width: 20%;}
+		.form p .status{width: 30%;font-size: 30px;}
+		.form .btn{width: 100px;height: 40px;border-radius: 5px;background: #fff;margin-right: 10px;}
+		.xlg-title{height: 50px;line-height: 50px;}
+	</style>
+{/literal}
+{/block}
+
+{*标题class*}
+{block name='class2'}
+active
+{/block}
+
+{*主体右部更改*}
+{block name="mainpanel"}
+	<div class="mainpanel" >
+	    <div class="contentpanel page_edit">
+	        <div class="row">
+	            <div class="col-sm-9">
+	                 <h5 class="md-title">用户</h5>
+	                
+	                
+	              
+	                <div class="well mt10">
+	                	
+	                    <div class="row" style="display: flex;justify-content: center; align-items: center;">
+	                    	<ul class="nav nav-pills nav-stacked nav-contacts">
+			                    <li class="read_list">
+			                        <a href="index.php?c=user&a=index" >
+			                            	查看用户列表
+			                            <span class="badge pull-right">{$count}</span>
+			                        </a>
+			                    </li>
+			                    <li class="add_article">
+			                        <a href="index.php?c=user&a=add" >
+			                            	+ 添加用户
+			                        </a>
+			                    </li>
+			                </ul>
+	                        <div class="col-sm-9" style="float: left;height: 40px;flex-grow: 1;">
+	                            <input type="text" placeholder="查找用户" class="form-control">
+	                        </div>
+	                        <div class="col-sm-3" style="width:150px;float: left;">
+	                            <select id="search-type" class="" data-placeholder="Search Type" style="width: 100px;>
+	                               
+	                                <option value="nickname" selected>昵称</option>
+	                                <option value="status">状态</option>
+	                                <option value="phone">手机号</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                </div><!-- well -->
+	                
+	                <br />
+	               
+	                <h3 class="xlg-title">编辑用户</h3>
+	                
+	                <div class="form">
+	                	<form action="index.php?c=user&a=update&eid={$info['id']}&pic={$info['users_pic']}" method="post" enctype = "multipart/form-data">
+	                		<span>修改头像</span>
+	                		<p style="display: flex;align-items: center;"><img src="../Public/Uploads/headerPic/{$info['users_pic']}"/><input type="file" name="users_pic" id="users_pic" /></p>
+	                		<p><input type="text" name="nickname" id="nickname" value="{$info['nickname']}" placeholder="请输入昵称"/></p>
+	                		<p><input type="password" name="password" id="password" value="{$info['password']}" placeholder="请输入密码"/></p>
+	                		
+	                		<p><input type="tel" name="phone" id="phone" value="{$info['phone']}" placeholder="请输入手机号"/></p>
+	                		<p>
+	                			<label><input value="0" type="radio" name="status" class="status" {if $info['status']==0}checked{else}{/if}>锁定</label>
+	                			<label><input value="1" type="radio" name="status" class="status" {if $info['status']==1}checked{else}{/if}>激活</label>
+	                		</p>
+	                		
+	                		
+	                		<input class="btn" type="submit" value="提交"/>
+	                		<input class="btn" type="reset" value="重置"/>
+	                	</form>
+	                </div><!-- list-group -->
+	                
+	                
+	                
+	                
+	            </div><!-- col-sm-9 -->
+	        </div><!-- row -->  
+	    
+	    </div><!-- contentpanel -->
+	    
+	</div>
+
+{/block}

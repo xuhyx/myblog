@@ -1,0 +1,76 @@
+{extends file="../Layouts/index.html"}
+{*控制主页样式*}
+{block name=style}
+<style>
+	#fh5co-board .item .fh5co-desc {
+	  padding: 10px;
+	  float: left;
+	  line-height: 20px;
+	  font-size: 13px;
+	}
+	#fh5co-board .item .fh5co-info{
+		width: 100%;
+		padding-top: 0;
+		font-size: 12px;
+		display: flex;justify-content: space-between;
+	}
+	#fh5co-board .intro{
+		text-decoration: none;
+		color: #818892;
+	}
+	#fh5co-board .intro:hover{
+		color: #EF5353;
+	}
+	#fh5co-board .item .fh5co-info .fa{
+	  width: 15px;
+	  height: 15px;
+	 margin: 0 5px 0 10px;
+	}
+	#fh5co-board .item .fh5co-info .icon{
+	  display: flex;
+	}
+	#fh5co-board .item .fh5co-info .icon a{
+	    text-decoration: none;
+		color: #818892;
+	}
+	#fh5co-board .item .fh5co-info .icon a:hover{
+	    color: #EF5353;
+	}
+</style>
+{/block}
+{*主页nav样式*}
+{block name=style1}
+active
+{/block}
+
+{block name=main}
+	
+	<div id="fh5co-main">
+		<div class="container">
+
+			<div class="row">
+
+        <div id="fh5co-board" data-columns>
+			{foreach $list as $k=>$v}
+        	<div class="item">
+        		<div class="animate-box">
+	        		<a href="../Public/Uploads/ArticlePic/{$v['picture']}" class="image-popup fh5co-board-img" title=""><img src="../Public/Uploads/ArticlePic/{$v['picture']}" alt="{$v['title']}"></a>
+        		</div>
+        		
+        		<div class="fh5co-desc"><a class="intro" href="index.php?c=details&a=index&id={$v['id']}">{$v['intro']|truncate:45}</a></div>
+        		<div class="fh5co-desc fh5co-info">
+            		<span class="insert_at">{$v['insert_at']}</span>
+            		<div class="icon">
+            			<span class="click_num num"><a href="#"><i class="fa fa-eye"></i>{$v['click_num']}</a></span>
+            			<span class="up_num num"><a href="#"><i class="fa fa-commenting-o"></i>{$v['up_num']}</a></span>
+            		</div>
+            		
+        		</div>
+        	</div>
+        	{/foreach}
+        </div>
+        </div>
+       </div>
+	</div>
+{/block}
+	
